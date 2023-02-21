@@ -83,6 +83,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
+              name: 'Preferencias',
+              path: 'preferencias',
+              builder: (context, params) => PreferenciasWidget(),
+            ),
+            FFRoute(
+              name: 'SolicitudPedidos',
+              path: 'solicitudPedidos',
+              builder: (context, params) => SolicitudPedidosWidget(),
+            ),
+            FFRoute(
+              name: 'DetallePedidos',
+              path: 'detallePedidos',
+              builder: (context, params) => DetallePedidosWidget(),
+            ),
+            FFRoute(
               name: 'Login',
               path: 'login',
               builder: (context, params) => LoginWidget(),

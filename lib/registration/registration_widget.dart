@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -44,7 +43,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -289,13 +288,6 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                               if (user == null) {
                                 return;
                               }
-
-                              final userCreateData = createUserRecordData(
-                                email: '',
-                              );
-                              await UserRecord.collection
-                                  .doc(user.uid)
-                                  .update(userCreateData);
 
                               await showDialog(
                                 context: context,
