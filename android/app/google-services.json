@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "239614468322",
+    "project_id": "pedidos-e9f07",
+    "storage_bucket": "pedidos-e9f07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239614468322:android:0e7b81a5a061418175bebb",
+        "android_client_info": {
+          "package_name": "com.mycompany.pedidos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239614468322-s7c8n6ln35c06kvahh7sdbmqq4avdvg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd405FF4l0yyA4HAv2H_ffBatgQ_BOeEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239614468322-s7c8n6ln35c06kvahh7sdbmqq4avdvg4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "239614468322-18jmdf7brb6ks1mv9ha8p04dlm9mn5j5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.pedidos"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

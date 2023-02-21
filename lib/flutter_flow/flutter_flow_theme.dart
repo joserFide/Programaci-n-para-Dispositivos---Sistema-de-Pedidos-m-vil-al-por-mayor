@@ -39,8 +39,9 @@ abstract class FlutterFlowTheme {
   late Color primaryText;
   late Color secondaryText;
 
-  late Color primaryBtnText;
-  late Color lineColor;
+  late Color additionalButtons;
+  late Color lines;
+  late Color buttonsSubmit;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -61,17 +62,18 @@ abstract class FlutterFlowTheme {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF4B39EF);
-  late Color secondaryColor = const Color(0xFF39D2C0);
+  late Color primaryColor = const Color(0xFFFFFFFF);
+  late Color secondaryColor = const Color(0xFF000000);
   late Color tertiaryColor = const Color(0xFFEE8B60);
   late Color alternate = const Color(0xFFFF5963);
-  late Color primaryBackground = const Color(0xFFF1F4F8);
+  late Color primaryBackground = const Color(0xFFFFFFFF);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color primaryText = const Color(0xFF101213);
+  late Color primaryText = const Color(0xFF000000);
   late Color secondaryText = const Color(0xFF57636C);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFFE0E3E7);
+  late Color additionalButtons = Color(0xFF4B55A1);
+  late Color lines = Color(0xFF000000);
+  late Color buttonsSubmit = Color(0xFF6D61B2);
 }
 
 abstract class Typography {
@@ -148,17 +150,18 @@ class ThemeTypography extends Typography {
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF4B39EF);
-  late Color secondaryColor = const Color(0xFF39D2C0);
+  late Color primaryColor = const Color(0xFF2C2C2C);
+  late Color secondaryColor = const Color(0xFFFFFFFF);
   late Color tertiaryColor = const Color(0xFFEE8B60);
   late Color alternate = const Color(0xFFFF5963);
-  late Color primaryBackground = const Color(0xFF1A1F24);
-  late Color secondaryBackground = const Color(0xFF101213);
+  late Color primaryBackground = const Color(0xFF2C2C2C);
+  late Color secondaryBackground = const Color(0xFF2C2C2C);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFF95A1AC);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFF22282F);
+  late Color additionalButtons = Color(0xFF4B55A1);
+  late Color lines = Color(0xFF000000);
+  late Color buttonsSubmit = Color(0xFF6D61B2);
 }
 
 extension TextStyleHelper on TextStyle {
