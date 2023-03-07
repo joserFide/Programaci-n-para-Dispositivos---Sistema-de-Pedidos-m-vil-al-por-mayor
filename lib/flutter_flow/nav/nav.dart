@@ -83,6 +83,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
+              name: 'Preferencias',
+              path: 'preferencias',
+              builder: (context, params) => PreferenciasWidget(),
+            ),
+            FFRoute(
+              name: 'DetallePedidos',
+              path: 'detallePedidos',
+              builder: (context, params) => DetallePedidosWidget(),
+            ),
+            FFRoute(
               name: 'Login',
               path: 'login',
               builder: (context, params) => LoginWidget(),
@@ -96,6 +106,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ResetPassword',
               path: 'resetPassword',
               builder: (context, params) => ResetPasswordWidget(),
+            ),
+            FFRoute(
+              name: 'SolicitudPedidos',
+              path: 'solicitudPedidos',
+              builder: (context, params) => SolicitudPedidosWidget(),
+            ),
+            FFRoute(
+              name: 'Productos',
+              path: 'productos',
+              builder: (context, params) => ProductosWidget(),
+            ),
+            FFRoute(
+              name: 'DetalleProductos',
+              path: 'detalleProductos',
+              builder: (context, params) => DetalleProductosWidget(
+                idProducto: params.getParam('idProducto',
+                    ParamType.DocumentReference, false, ['productos']),
+              ),
+            ),
+            FFRoute(
+              name: 'Menu',
+              path: 'menu',
+              builder: (context, params) => MenuWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -270,8 +303,8 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Center(
                   child: SizedBox(
-                    width: 50,
-                    height: 50,
+                    width: 50.0,
+                    height: 50.0,
                     child: CircularProgressIndicator(
                       color: FlutterFlowTheme.of(context).primaryColor,
                     ),
