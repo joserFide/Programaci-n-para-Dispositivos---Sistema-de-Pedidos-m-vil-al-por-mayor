@@ -11,19 +11,29 @@ abstract class UserRecord implements Built<UserRecord, UserRecordBuilder> {
 
   String? get email;
 
-  @BuiltValueField(wireName: 'display_name')
-  String? get displayName;
-
-  @BuiltValueField(wireName: 'photo_url')
-  String? get photoUrl;
-
   String? get uid;
 
   @BuiltValueField(wireName: 'created_time')
   DateTime? get createdTime;
 
+  String? get numeroIdentificacion;
+
+  String? get nombreCompleto;
+
+  int? get numeroTelefono;
+
+  String? get nombreEmpresa;
+
+  @BuiltValueField(wireName: 'photo_url')
+  String? get photoUrl;
+
+  @BuiltValueField(wireName: 'display_name')
+  String? get displayName;
+
   @BuiltValueField(wireName: 'phone_number')
   String? get phoneNumber;
+
+  String? get direccion;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -31,10 +41,15 @@ abstract class UserRecord implements Built<UserRecord, UserRecordBuilder> {
 
   static void _initializeBuilder(UserRecordBuilder builder) => builder
     ..email = ''
-    ..displayName = ''
-    ..photoUrl = ''
     ..uid = ''
-    ..phoneNumber = '';
+    ..numeroIdentificacion = ''
+    ..nombreCompleto = ''
+    ..numeroTelefono = 0
+    ..nombreEmpresa = ''
+    ..photoUrl = ''
+    ..displayName = ''
+    ..phoneNumber = ''
+    ..direccion = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('user');
@@ -58,22 +73,32 @@ abstract class UserRecord implements Built<UserRecord, UserRecordBuilder> {
 
 Map<String, dynamic> createUserRecordData({
   String? email,
-  String? displayName,
-  String? photoUrl,
   String? uid,
   DateTime? createdTime,
+  String? numeroIdentificacion,
+  String? nombreCompleto,
+  int? numeroTelefono,
+  String? nombreEmpresa,
+  String? photoUrl,
+  String? displayName,
   String? phoneNumber,
+  String? direccion,
 }) {
   final firestoreData = serializers.toFirestore(
     UserRecord.serializer,
     UserRecord(
       (u) => u
         ..email = email
-        ..displayName = displayName
-        ..photoUrl = photoUrl
         ..uid = uid
         ..createdTime = createdTime
-        ..phoneNumber = phoneNumber,
+        ..numeroIdentificacion = numeroIdentificacion
+        ..nombreCompleto = nombreCompleto
+        ..numeroTelefono = numeroTelefono
+        ..nombreEmpresa = nombreEmpresa
+        ..photoUrl = photoUrl
+        ..displayName = displayName
+        ..phoneNumber = phoneNumber
+        ..direccion = direccion,
     ),
   );
 
