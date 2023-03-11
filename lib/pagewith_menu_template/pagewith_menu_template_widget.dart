@@ -5,18 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'menu_model.dart';
-export 'menu_model.dart';
+import 'pagewith_menu_template_model.dart';
+export 'pagewith_menu_template_model.dart';
 
-class MenuWidget extends StatefulWidget {
-  const MenuWidget({Key? key}) : super(key: key);
+class PagewithMenuTemplateWidget extends StatefulWidget {
+  const PagewithMenuTemplateWidget({Key? key}) : super(key: key);
 
   @override
-  _MenuWidgetState createState() => _MenuWidgetState();
+  _PagewithMenuTemplateWidgetState createState() =>
+      _PagewithMenuTemplateWidgetState();
 }
 
-class _MenuWidgetState extends State<MenuWidget> {
-  late MenuModel _model;
+class _PagewithMenuTemplateWidgetState
+    extends State<PagewithMenuTemplateWidget> {
+  late PagewithMenuTemplateModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -24,7 +26,7 @@ class _MenuWidgetState extends State<MenuWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MenuModel());
+    _model = createModel(context, () => PagewithMenuTemplateModel());
   }
 
   @override
@@ -70,7 +72,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 children: [
                   AuthUserStreamWidget(
                     builder: (context) => Text(
-                      valueOrDefault(currentUserDocument?.nombreCompleto, ''),
+                      currentUserDisplayName,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             fontSize: 20.0,
@@ -126,7 +128,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                     child: InkWell(
                       onTap: () async {
-                        context.pushNamed('Preferencias');
+                        context.pushNamed('Productos');
                       },
                       child: ListTile(
                         leading: FaIcon(
@@ -146,7 +148,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                     child: InkWell(
                       onTap: () async {
-                        context.pushNamed('SolicitudPedidos');
+                        context.pushNamed('DetallesPedido');
                       },
                       child: ListTile(
                         leading: Icon(
@@ -164,21 +166,16 @@ class _MenuWidgetState extends State<MenuWidget> {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                    child: InkWell(
-                      onTap: () async {
-                        context.pushNamed('DetallePedidos');
-                      },
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.timer,
-                        ),
-                        title: Text(
-                          'Pedidos pendientes',
-                          style: FlutterFlowTheme.of(context).title3,
-                        ),
-                        tileColor: Color(0xFFF5F5F5),
-                        dense: false,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.timer,
                       ),
+                      title: Text(
+                        'Pedidos pendientes',
+                        style: FlutterFlowTheme.of(context).title3,
+                      ),
+                      tileColor: Color(0xFFF5F5F5),
+                      dense: false,
                     ),
                   ),
                   Padding(

@@ -18,10 +18,6 @@ abstract class UserRecord implements Built<UserRecord, UserRecordBuilder> {
 
   String? get numeroIdentificacion;
 
-  String? get nombreCompleto;
-
-  int? get numeroTelefono;
-
   String? get nombreEmpresa;
 
   @BuiltValueField(wireName: 'photo_url')
@@ -43,8 +39,6 @@ abstract class UserRecord implements Built<UserRecord, UserRecordBuilder> {
     ..email = ''
     ..uid = ''
     ..numeroIdentificacion = ''
-    ..nombreCompleto = ''
-    ..numeroTelefono = 0
     ..nombreEmpresa = ''
     ..photoUrl = ''
     ..displayName = ''
@@ -76,8 +70,6 @@ Map<String, dynamic> createUserRecordData({
   String? uid,
   DateTime? createdTime,
   String? numeroIdentificacion,
-  String? nombreCompleto,
-  int? numeroTelefono,
   String? nombreEmpresa,
   String? photoUrl,
   String? displayName,
@@ -92,8 +84,6 @@ Map<String, dynamic> createUserRecordData({
         ..uid = uid
         ..createdTime = createdTime
         ..numeroIdentificacion = numeroIdentificacion
-        ..nombreCompleto = nombreCompleto
-        ..numeroTelefono = numeroTelefono
         ..nombreEmpresa = nombreEmpresa
         ..photoUrl = photoUrl
         ..displayName = displayName

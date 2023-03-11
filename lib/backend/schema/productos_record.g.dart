@@ -56,20 +56,6 @@ class _$ProductosRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.subTotal;
-    if (value != null) {
-      result
-        ..add('subTotal')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
-    }
-    value = object.impuesto;
-    if (value != null) {
-      result
-        ..add('impuesto')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
-    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -113,14 +99,6 @@ class _$ProductosRecordSerializer
           result.idProducto = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'subTotal':
-          result.subTotal = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
-          break;
-        case 'impuesto':
-          result.impuesto = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
-          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -146,10 +124,6 @@ class _$ProductosRecord extends ProductosRecord {
   @override
   final String? idProducto;
   @override
-  final double? subTotal;
-  @override
-  final double? impuesto;
-  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ProductosRecord([void Function(ProductosRecordBuilder)? updates]) =>
@@ -161,8 +135,6 @@ class _$ProductosRecord extends ProductosRecord {
       this.descripcion,
       this.imagen,
       this.idProducto,
-      this.subTotal,
-      this.impuesto,
       this.ffRef})
       : super._();
 
@@ -183,8 +155,6 @@ class _$ProductosRecord extends ProductosRecord {
         descripcion == other.descripcion &&
         imagen == other.imagen &&
         idProducto == other.idProducto &&
-        subTotal == other.subTotal &&
-        impuesto == other.impuesto &&
         ffRef == other.ffRef;
   }
 
@@ -193,14 +163,10 @@ class _$ProductosRecord extends ProductosRecord {
     return $jf($jc(
         $jc(
             $jc(
-                $jc(
-                    $jc(
-                        $jc($jc($jc(0, nombre.hashCode), precio.hashCode),
-                            descripcion.hashCode),
-                        imagen.hashCode),
-                    idProducto.hashCode),
-                subTotal.hashCode),
-            impuesto.hashCode),
+                $jc($jc($jc(0, nombre.hashCode), precio.hashCode),
+                    descripcion.hashCode),
+                imagen.hashCode),
+            idProducto.hashCode),
         ffRef.hashCode));
   }
 
@@ -212,8 +178,6 @@ class _$ProductosRecord extends ProductosRecord {
           ..add('descripcion', descripcion)
           ..add('imagen', imagen)
           ..add('idProducto', idProducto)
-          ..add('subTotal', subTotal)
-          ..add('impuesto', impuesto)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -243,14 +207,6 @@ class ProductosRecordBuilder
   String? get idProducto => _$this._idProducto;
   set idProducto(String? idProducto) => _$this._idProducto = idProducto;
 
-  double? _subTotal;
-  double? get subTotal => _$this._subTotal;
-  set subTotal(double? subTotal) => _$this._subTotal = subTotal;
-
-  double? _impuesto;
-  double? get impuesto => _$this._impuesto;
-  set impuesto(double? impuesto) => _$this._impuesto = impuesto;
-
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -267,8 +223,6 @@ class ProductosRecordBuilder
       _descripcion = $v.descripcion;
       _imagen = $v.imagen;
       _idProducto = $v.idProducto;
-      _subTotal = $v.subTotal;
-      _impuesto = $v.impuesto;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -297,8 +251,6 @@ class ProductosRecordBuilder
             descripcion: descripcion,
             imagen: imagen,
             idProducto: idProducto,
-            subTotal: subTotal,
-            impuesto: impuesto,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

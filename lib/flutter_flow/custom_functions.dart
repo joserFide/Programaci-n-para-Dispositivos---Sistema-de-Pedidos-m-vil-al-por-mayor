@@ -11,27 +11,47 @@ import '../backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../auth/auth_util.dart';
 
-double subtotalGeneral(List<double> listaSubtotales) {
-  double value = 0.0;
-
-  for (double val in listaSubtotales) {
-    value += val;
-  }
-
-  return value;
-}
-
-double subtotalProductos(
-  int qty,
-  double precio,
-) {
-  return qty * precio;
-}
-
 double impuesto(double cantidad) {
   return cantidad * 0.1;
 }
 
-double precioTotal(double cantidad) {
-  return cantidad + (cantidad * 0.1) + 2;
+double restarSubtotal(
+  double valorSubtotal,
+  double precio,
+) {
+  if (valorSubtotal > 0) {
+    valorSubtotal = valorSubtotal - precio;
+  }
+  return valorSubtotal;
+}
+
+double sumarSubtotal(
+  double valorSubtotal,
+  double precio,
+) {
+  valorSubtotal = valorSubtotal + precio;
+  return valorSubtotal;
+}
+
+double totalLista(List<double> subTotal) {
+  double total = 0;
+  for (double add in subTotal) {
+    total += add;
+  }
+  return total;
+}
+
+double calcularSubtotal(
+  double precio,
+  int cantidad,
+) {
+  return precio * cantidad;
+}
+
+int cantidadTotal(List<int> cantidad) {
+  int total = 0;
+  for (int add in cantidad) {
+    total += add;
+  }
+  return total;
 }

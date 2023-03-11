@@ -350,7 +350,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                             text: 'Atrás',
                             icon: Icon(
                               Icons.arrow_back_sharp,
-                              size: 18.0,
+                              color: Colors.black,
+                              size: 20.0,
                             ),
                             options: FFButtonOptions(
                               width: 100.0,
@@ -364,9 +365,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                    fontSize: 12.0,
+                                    color: Colors.black,
+                                    fontSize: 15.0,
                                   ),
                               borderSide: BorderSide(
                                 color: Colors.transparent,

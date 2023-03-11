@@ -83,16 +83,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'Preferencias',
-              path: 'preferencias',
-              builder: (context, params) => PreferenciasWidget(),
-            ),
-            FFRoute(
-              name: 'DetallePedidos',
-              path: 'detallePedidos',
-              builder: (context, params) => DetallePedidosWidget(),
-            ),
-            FFRoute(
               name: 'Login',
               path: 'login',
               builder: (context, params) => LoginWidget(),
@@ -103,14 +93,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistrationWidget(),
             ),
             FFRoute(
+              name: 'PagewithMenuTemplate',
+              path: 'pagewithMenuTemplate',
+              builder: (context, params) => PagewithMenuTemplateWidget(),
+            ),
+            FFRoute(
+              name: 'RequestResetPassword',
+              path: 'requestResetPassword',
+              builder: (context, params) => RequestResetPasswordWidget(),
+            ),
+            FFRoute(
               name: 'ResetPassword',
               path: 'resetPassword',
               builder: (context, params) => ResetPasswordWidget(),
             ),
             FFRoute(
-              name: 'SolicitudPedidos',
-              path: 'solicitudPedidos',
-              builder: (context, params) => SolicitudPedidosWidget(),
+              name: 'Preferencias',
+              path: 'preferencias',
+              builder: (context, params) => PreferenciasWidget(),
             ),
             FFRoute(
               name: 'Productos',
@@ -118,21 +118,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ProductosWidget(),
             ),
             FFRoute(
-              name: 'DetalleProductos',
-              path: 'detalleProductos',
-              builder: (context, params) => DetalleProductosWidget(
-                idProducto: params.getParam('idProducto',
-                    ParamType.DocumentReference, false, ['productos']),
-              ),
+              name: 'SolicitudPedidos',
+              path: 'solicitudPedidos',
+              builder: (context, params) => SolicitudPedidosWidget(),
             ),
             FFRoute(
-              name: 'Menu',
-              path: 'menu',
-              builder: (context, params) => MenuWidget(),
+              name: 'EditarPreferencias',
+              path: 'editarPreferencias',
+              builder: (context, params) => EditarPreferenciasWidget(),
+            ),
+            FFRoute(
+              name: 'CrearPreferencias',
+              path: 'crearPreferencias',
+              builder: (context, params) => CrearPreferenciasWidget(),
+            ),
+            FFRoute(
+              name: 'DetallesPedido',
+              path: 'detallesPedido',
+              builder: (context, params) => DetallesPedidoWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
-        ).toRoute(appStateNotifier),
-      ],
+        ),
+      ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
     );
 
@@ -178,6 +185,16 @@ extension NavigationExtensions on BuildContext {
               queryParams: queryParams,
               extra: extra,
             );
+
+  void safePop() {
+    // If there is only one route on the stack, navigate to the initial
+    // page instead of popping.
+    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
+      go('/');
+    } else {
+      pop();
+    }
+  }
 }
 
 extension GoRouterExtensions on GoRouter {
