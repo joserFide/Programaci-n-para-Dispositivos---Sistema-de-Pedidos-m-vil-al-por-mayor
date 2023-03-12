@@ -7,6 +7,7 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(CarritoRecord.serializer)
       ..add(PedidosRecord.serializer)
       ..add(ProductosRecord.serializer)
       ..add(UserRecord.serializer))

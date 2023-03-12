@@ -47,19 +47,6 @@ class _$UserRecordSerializer implements StructuredSerializer<UserRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.nombreCompleto;
-    if (value != null) {
-      result
-        ..add('nombreCompleto')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.numeroTelefono;
-    if (value != null) {
-      result
-        ..add('numeroTelefono')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.nombreEmpresa;
     if (value != null) {
       result
@@ -133,14 +120,6 @@ class _$UserRecordSerializer implements StructuredSerializer<UserRecord> {
           result.numeroIdentificacion = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'nombreCompleto':
-          result.nombreCompleto = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'numeroTelefono':
-          result.numeroTelefono = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'nombreEmpresa':
           result.nombreEmpresa = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -184,10 +163,6 @@ class _$UserRecord extends UserRecord {
   @override
   final String? numeroIdentificacion;
   @override
-  final String? nombreCompleto;
-  @override
-  final int? numeroTelefono;
-  @override
   final String? nombreEmpresa;
   @override
   final String? photoUrl;
@@ -208,8 +183,6 @@ class _$UserRecord extends UserRecord {
       this.uid,
       this.createdTime,
       this.numeroIdentificacion,
-      this.nombreCompleto,
-      this.numeroTelefono,
       this.nombreEmpresa,
       this.photoUrl,
       this.displayName,
@@ -233,8 +206,6 @@ class _$UserRecord extends UserRecord {
         uid == other.uid &&
         createdTime == other.createdTime &&
         numeroIdentificacion == other.numeroIdentificacion &&
-        nombreCompleto == other.nombreCompleto &&
-        numeroTelefono == other.numeroTelefono &&
         nombreEmpresa == other.nombreEmpresa &&
         photoUrl == other.photoUrl &&
         displayName == other.displayName &&
@@ -252,15 +223,9 @@ class _$UserRecord extends UserRecord {
                     $jc(
                         $jc(
                             $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc($jc(0, email.hashCode),
-                                                uid.hashCode),
-                                            createdTime.hashCode),
-                                        numeroIdentificacion.hashCode),
-                                    nombreCompleto.hashCode),
-                                numeroTelefono.hashCode),
+                                $jc($jc($jc(0, email.hashCode), uid.hashCode),
+                                    createdTime.hashCode),
+                                numeroIdentificacion.hashCode),
                             nombreEmpresa.hashCode),
                         photoUrl.hashCode),
                     displayName.hashCode),
@@ -276,8 +241,6 @@ class _$UserRecord extends UserRecord {
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('numeroIdentificacion', numeroIdentificacion)
-          ..add('nombreCompleto', nombreCompleto)
-          ..add('numeroTelefono', numeroTelefono)
           ..add('nombreEmpresa', nombreEmpresa)
           ..add('photoUrl', photoUrl)
           ..add('displayName', displayName)
@@ -307,16 +270,6 @@ class UserRecordBuilder implements Builder<UserRecord, UserRecordBuilder> {
   String? get numeroIdentificacion => _$this._numeroIdentificacion;
   set numeroIdentificacion(String? numeroIdentificacion) =>
       _$this._numeroIdentificacion = numeroIdentificacion;
-
-  String? _nombreCompleto;
-  String? get nombreCompleto => _$this._nombreCompleto;
-  set nombreCompleto(String? nombreCompleto) =>
-      _$this._nombreCompleto = nombreCompleto;
-
-  int? _numeroTelefono;
-  int? get numeroTelefono => _$this._numeroTelefono;
-  set numeroTelefono(int? numeroTelefono) =>
-      _$this._numeroTelefono = numeroTelefono;
 
   String? _nombreEmpresa;
   String? get nombreEmpresa => _$this._nombreEmpresa;
@@ -354,8 +307,6 @@ class UserRecordBuilder implements Builder<UserRecord, UserRecordBuilder> {
       _uid = $v.uid;
       _createdTime = $v.createdTime;
       _numeroIdentificacion = $v.numeroIdentificacion;
-      _nombreCompleto = $v.nombreCompleto;
-      _numeroTelefono = $v.numeroTelefono;
       _nombreEmpresa = $v.nombreEmpresa;
       _photoUrl = $v.photoUrl;
       _displayName = $v.displayName;
@@ -388,8 +339,6 @@ class UserRecordBuilder implements Builder<UserRecord, UserRecordBuilder> {
             uid: uid,
             createdTime: createdTime,
             numeroIdentificacion: numeroIdentificacion,
-            nombreCompleto: nombreCompleto,
-            numeroTelefono: numeroTelefono,
             nombreEmpresa: nombreEmpresa,
             photoUrl: photoUrl,
             displayName: displayName,

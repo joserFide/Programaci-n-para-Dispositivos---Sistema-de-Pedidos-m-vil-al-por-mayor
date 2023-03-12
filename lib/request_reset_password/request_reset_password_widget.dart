@@ -1,21 +1,25 @@
+import '/auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'reset_password_model.dart';
-export 'reset_password_model.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'request_reset_password_model.dart';
+export 'request_reset_password_model.dart';
 
-class ResetPasswordWidget extends StatefulWidget {
-  const ResetPasswordWidget({Key? key}) : super(key: key);
+class RequestResetPasswordWidget extends StatefulWidget {
+  const RequestResetPasswordWidget({Key? key}) : super(key: key);
 
   @override
-  _ResetPasswordWidgetState createState() => _ResetPasswordWidgetState();
+  _RequestResetPasswordWidgetState createState() =>
+      _RequestResetPasswordWidgetState();
 }
 
-class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
-  late ResetPasswordModel _model;
+class _RequestResetPasswordWidgetState
+    extends State<RequestResetPasswordWidget> {
+  late RequestResetPasswordModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -23,9 +27,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ResetPasswordModel());
+    _model = createModel(context, () => RequestResetPasswordModel());
 
-    _model.txtClaveController ??= TextEditingController();
+    _model.txtUsuarioController ??= TextEditingController();
   }
 
   @override
@@ -61,7 +65,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 50.0, 0.0, 50.0),
                           child: Text(
-                            'Actualización de nueva contraseña',
+                            'Solicitud de reseteo de contraseña',
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
@@ -71,86 +75,92 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                                     ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 30.0, 0.0, 0.0),
-                          child: TextFormField(
-                            controller: _model.txtClaveController,
-                            autofocus: true,
-                            obscureText: !_model.txtClaveVisibility,
-                            decoration: InputDecoration(
-                              labelText: 'Contraseña',
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
+                        TextFormField(
+                          controller: _model.txtUsuarioController,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Correo electrónico',
+                            hintText: 'usuario@correo.com',
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.contact_mail_outlined,
+                              color: FlutterFlowTheme.of(context).lines,
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).lines,
                                     fontSize: 20.0,
                                   ),
-                              hintText: 'Ingrese una nueva contraseña',
-                              hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              errorBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              focusedErrorBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              prefixIcon: Icon(
-                                Icons.vpn_key,
-                                color: FlutterFlowTheme.of(context).lines,
-                              ),
-                              suffixIcon: InkWell(
-                                onTap: () => setState(
-                                  () => _model.txtClaveVisibility =
-                                      !_model.txtClaveVisibility,
-                                ),
-                                focusNode: FocusNode(skipTraversal: true),
-                                child: Icon(
-                                  _model.txtClaveVisibility
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined,
-                                  color: Color(0xFF757575),
-                                  size: 22.0,
-                                ),
-                              ),
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                            validator: _model.txtClaveControllerValidator
-                                .asValidator(context),
-                          ),
+                          keyboardType: TextInputType.emailAddress,
+                          validator: _model.txtUsuarioControllerValidator
+                              .asValidator(context),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 50.0, 0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('btnNuevaClave pressed ...');
+                            onPressed: () async {
+                              if (_model.txtUsuarioController.text.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Email required!',
+                                    ),
+                                  ),
+                                );
+                                return;
+                              }
+                              await resetPassword(
+                                email: _model.txtUsuarioController.text,
+                                context: context,
+                              );
+                              await launchUrl(Uri(
+                                  scheme: 'mailto',
+                                  path: currentUserEmail,
+                                  query: {
+                                    'subject':
+                                        'Sistema productos: Reseto de contraseña',
+                                    'body': 'Prueba?',
+                                  }
+                                      .entries
+                                      .map((MapEntry<String, String> e) =>
+                                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                      .join('&')));
                             },
-                            text: 'Guardar',
+                            text: 'Enviar',
                             icon: Icon(
-                              Icons.save,
+                              Icons.login,
                               size: 15.0,
                             ),
                             options: FFButtonOptions(

@@ -199,7 +199,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               0.0, 40.0, 0.0, 60.0),
                           child: InkWell(
                             onTap: () async {
-                              context.pushNamed('ResetPassword');
+                              context.pushNamed('RequestResetPassword');
                             },
                             child: Text(
                               '¿Has olvidado tu contraseña?',
@@ -208,7 +208,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                        .secondaryColor,
                                     fontSize: 14.0,
                                   ),
                             ),
@@ -256,29 +256,41 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 150.0, 0.0, 0.0),
+                              0.0, 100.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 50.0),
-                                child: InkWell(
-                                  onTap: () async {
-                                    context.pushNamed('Registration');
-                                  },
-                                  child: Text(
-                                    'Registrarse',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          fontSize: 16.0,
-                                        ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  context.pushNamed('Registration');
+                                },
+                                text: 'Registrarse',
+                                icon: Icon(
+                                  Icons.how_to_reg_rounded,
+                                  size: 20.0,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 130.0,
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                        fontSize: 18.0,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
                                   ),
+                                  borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
                             ],
